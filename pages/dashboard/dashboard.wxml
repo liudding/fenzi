@@ -1,0 +1,40 @@
+<view class="container" wx:if="{{hasData}}">
+
+  <view class="summary">
+    <view class="chart">
+      <canvas canvas-id="pieChart" class="pie-chart-canvas" style="height:150px;width:150px;"></canvas>
+    </view>
+     <view class="summary__detail">
+     <view class="summary__detail__wrapper">
+      <view class="outgoing">给出：{{summary.outgoing}} 元</view>
+      <view class="income">收到：{{summary.income}} 元</view>
+      <view class="sum">差值：{{summary.sum}} 元</view>
+     </view>
+      
+     </view>
+  </view>
+
+  <view class="brief-infos">
+    <view wx:for="{{briefInfos}}" wx:key="index" class="brief-item">
+      <view class="brief-item__text">{{item.value}}
+        <text style="font-size:12px;">{{item.unit}}</text>
+      </view>
+       <view class="brief-item__title">{{item.title}}</view>
+    </view>
+  </view>
+
+  <!-- <view>
+    <view class="chart">
+      <canvas canvas-id="event-chart" class="pie-chart-canvas" style="height:150px;width:150px;"></canvas>
+    </view>
+
+  </view> -->
+
+</view>
+
+<view class="" wx:if="{{!hasData}}">
+  <emptyset title="暂无数据" info="先去记录一下吧" icon="tea" >
+  
+  </emptyset>
+
+</view>

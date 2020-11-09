@@ -1,0 +1,43 @@
+<mp-cell bindtap="onTapGroup">
+
+	<view class="gift-group">
+
+		<view class="gift-group__head">
+			<view catchtap="onTapAdd" class="accessory">
+				<mp-icon icon="add2" color="#00b9f1" size="{{20}}"></mp-icon>
+			</view>
+
+			<view>
+				<view class="gift-group__head__infos">
+					<text class="name">{{group.event}}</text>
+				</view>
+				<view>
+					<text class="date">{{group.gifts.length}} 人</text>
+					<text class="date">{{group.date}}</text>
+				</view>
+			</view>
+
+
+		</view>
+
+
+
+		<view class="gift-group__money">
+			{{group.total}}
+			<text style="font-size: 12px; color: #b2b2b2;">元</text>
+		</view>
+	</view>
+</mp-cell>
+
+
+<!-- gifts -->
+<view wx:if="{{!folded && hasExpanded}}" class="gifts-container">
+	<view class="gifts">
+		<mp-cells>
+			<mp-cell wx:for="{{group.gifts}}" wx:key="id" value="{{item.contact.name}}" footer="{{item.amount}}" link hover
+				catchtap="onTapItem" data-index="{{index}}">
+			</mp-cell>
+		</mp-cells>
+	</view>
+
+</view>

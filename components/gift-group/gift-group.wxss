@@ -1,0 +1,116 @@
+
+.gift-group {
+  /* height: 70px; */
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gift-group__head {
+  display: flex;
+  flex-direction: row;
+
+
+  /* background: red; */
+}
+
+.gift-group__head__infos {
+  margin-left: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.accessory {
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+
+  margin-right: 4px;
+
+  text-align: center;
+}
+
+.gifts-container {
+  margin-top: 8px;
+  padding: 8px 16px;
+  /* border-radius: 8px; */
+  background: #fafafa;
+}
+
+.gifts {
+  padding: 8px 0;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.gift {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+
+  height: 35px;
+  line-height: 35px;
+
+  padding: 4px 0;
+}
+
+.gift::after {
+  content: ' ';
+  position: absolute;
+  pointer-events: none;
+  box-sizing: border-box;
+
+  left: 0px;
+  right: 0px;
+  bottom: 0;
+  transform: scaleY(0.5);
+  border-bottom: 1px solid #dddddd;
+}
+
+
+.name {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+
+.relationship {
+  line-height: 16px;
+  margin-left: 8px;
+
+  height: 16px;
+
+  font-size: 12px;
+
+  padding: 2px 8px;
+
+  background: #f0f0f0;
+  border-radius: 4px;
+
+  color: #888;
+
+}
+
+.date {
+  color: gray;
+  margin-left: 8px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.gift-group__money {
+  /* background: blue; */
+  font-size: 30px;
+  color: #2b2b2b;
+  /* line-height: 40px; */
+}
+
+.event {
+  margin-top: 8px;
+  min-height:20px;
+  color: #6b6b6b;
+}

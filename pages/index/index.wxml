@@ -1,0 +1,46 @@
+<mp-navigation-bar show color="{{color}}" background="#fff" back="{{false}}">
+	<!-- <view bindtap="onTapSearch" slot="left" class="iconfont icon-plus-circle-fill add-icon"></view> -->
+	<mp-icon bindtap="onTapSearch" type="field" icon="search" color="gray" size="{{25}}" slot="left"></mp-icon>
+	<view bindtap="onTapFilter" slot="center" class="navi-title">
+		{{isIncome ? '收到的' : '给出的'}}</view>
+</mp-navigation-bar>
+
+<!-- <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar> -->
+
+
+<view class="container">
+	<view class="header">
+		<view>{{type}}</view>
+		<view class="total">
+			<text style="color: #b2b2b2;font-size:13px;line-height: 40px;">合计</text> {{total}}
+			<text style="color: #b2b2b2;font-size:12px;line-height: 40px;">元</text>
+		</view>
+	</view>
+
+	<view class="fenzis">
+
+		<!-- 收到的 -->
+		<view hidden="{{!isIncome}}">
+			<view wx:for="{{groups}}" wx:key="event" data-index="{{index}}">
+				<gift-group group="{{item}}" bind:tapItem="onTapGroupedGift" bind:tapAddItem="onTapAddGroupedGift"></gift-group>
+			</view>
+		</view>
+	
+
+		<!-- 给出的 -->
+		<view hidden="{{isIncome}}">
+			<mp-cell wx:for="{{gifts}}" wx:key="key" bindtap="onTapGift" bindlongpress="onLongPressGift" data-index="{{index}}" link
+				hover>
+				<gift gift="{{item}}"></gift>
+			</mp-cell>
+		</view>
+
+	</view>
+</view>
+
+<view class="fab fab-bottom-right">
+	<view bindtap="onTapCreate" class="iconfont icon-edit-2 new-btn"></view>
+</view>
+
+
+<tip wx:if="{{showPin}}" text="添加到我的小程序"></tip>

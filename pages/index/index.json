@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "mp-navigation-bar": "/miniprogram_npm/weui-miniprogram/navigation-bar/navigation-bar",
+    "mp-cells": "/miniprogram_npm/weui-miniprogram/cells/cells",
+    "mp-cell": "/miniprogram_npm/weui-miniprogram/cell/cell",
+    "mp-icon": "/miniprogram_npm/weui-miniprogram/icon/icon",
+    "tip": "/components/tip/tip",
+    "gift": "/components/giftcell/gift",
+    "gift-group": "/components/gift-group/gift-group"
+  },
+  "navigationBarTitleText": "",
+  "navigationStyle": "custom"
+}

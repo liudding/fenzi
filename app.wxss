@@ -1,0 +1,3 @@
+/* @import '/miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss'; */
+@import '/styles/index.wxss';
+@import '/vendor/iconfont/iconfont.wxss';

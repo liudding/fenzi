@@ -1,0 +1,52 @@
+<view class="page">
+  <view wx:if="{{showProfile}}" class="profile">
+    <view class="avatar-wrapper">
+      <image src="{{userInfo.avatarUrl}}" class="avatar"></image>
+    </view>
+
+    <view class="infos">
+      <text class="name">{{userInfo.nickName}}</text>
+    </view>
+
+  </view>
+
+  <button wx:else bindgetuserinfo="onTapLogin" open-type="getUserInfo" class="c-btn login-btn" hover-class="c-btn-hover">授权登录</button>
+
+
+
+  <view class="more">
+    <!-- <mp-cell bindtap="onTapPersonalize" title="联系人" link hover></mp-cell> -->
+    <!-- <mp-cell bindtap="onTapPersonalize" title="我的事件" link hover></mp-cell> -->
+    <mp-cell title="分享转发" footer="如果喜欢，请分享给好友" link hover>
+      <view slot="icon" class="iconfont icon-share icon"></view>
+      <button open-type="share" class="c-btn feedback"></button>
+    </mp-cell>
+
+    <mp-cell bindtap="onTapExport" title="数据导出" link hover>
+      <view slot="icon" class="iconfont icon-file-text icon"></view>
+    </mp-cell>
+    <mp-cell title="联系客服" link hover>
+      <view slot="icon" class="iconfont icon-life-buoy icon"></view>
+      <button open-type="contact" class="c-btn feedback"></button>
+    </mp-cell>
+    <mp-cell title="意见反馈" footer="欢迎提出建议" link hover>
+      <view slot="icon" class="iconfont icon-smile icon"></view>
+      <button open-type="feedback" class="c-btn feedback"></button>
+    </mp-cell>
+    <!-- <mp-cell bindtap="onTapHelp" title="帮助与反馈" link hover></mp-cell> -->
+
+    <view style="color: gray; font-size: 12px; margin-top: 16px; margin-left: 16px;">更多小程序</view>
+
+    <mp-cell title="易卡包" bindtap="onTapCardllet" link>
+      <image slot="icon" src="/images/cardllet.png" mode="aspectFill" class="icon image-icon"></image>
+    </mp-cell>
+
+    <mp-cell title="古诗起名" bindtap="onTapPoem" link>
+      <image slot="icon" src="/images/poem.png" mode="aspectFill" class=" image-icon"></image>
+    </mp-cell>
+
+    <mp-cell title="elem" bindtap="onTapElem" link>
+      <image slot="icon" src="/images/cardllet.png" mode="aspectFill" class="icon image-icon"></image>
+    </mp-cell>
+  </view>
+</view>
