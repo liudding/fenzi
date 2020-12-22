@@ -1,0 +1,12 @@
+.confirm {
+  height: 400px;
+  width: 100vw;
+  background: white;
+  margin-top: 4px;
+  padding: 32px;
+  box-sizing: border-box;
+  overflow-y: auto;
+
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}

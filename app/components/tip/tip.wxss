@@ -1,0 +1,53 @@
+.container {
+  position: fixed;
+
+  top: 100px;
+  right: 10px;
+
+  z-index: 1000;
+}
+
+.bubble {
+  background: #00b9f1af;
+  padding: 0 8px;
+
+  display: inline-block;
+  position: relative;
+	/* height: 20px; */
+
+  box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.txt {
+  line-height: 20px;
+  font-size: 10px;
+  color: white;
+}
+
+
+/* .left-top:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+  left: -20px;
+	right: auto;
+  top: 0px;
+	bottom: auto;
+	border: 22px solid;
+	border-color: red transparent transparent transparent;
+} */
+
+
+.top-left:after{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+	right: 60px;
+	top: -15px;
+	border: 8px solid;
+	border-color: transparent transparent #00b9f1af transparent;
+  border-radius: 1px;
+}

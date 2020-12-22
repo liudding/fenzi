@@ -1,0 +1,18 @@
+  <view class="gift">
+  	<view class="gift__head">
+  		<view class="gift__head__infos">
+  			<text class="name">{{gift.contact.name}}</text>
+  			<text class="relationship">{{gift.contact.relationship}}</text>
+  			<text class="date">{{gift.date}}</text>
+  		</view>
+
+  		<view class="event">
+  			<text>{{gift.icon}}{{gift.event}}</text>
+  		</view>
+  	</view>
+
+  	<view class="gift__money">
+  		{{gift.amount}}
+  		<text style="font-size: 12px; color: #b2b2b2;">元</text>
+  	</view>
+  </view>

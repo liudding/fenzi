@@ -39,7 +39,8 @@
   "libVersion": "2.7.5",
   "appid": "wx9ca5d608dc08fa4e",
   "projectname": "Fenzi",
-  "cloudfunctionRoot": "./functions/",
+  "miniprogramRoot": "app/",
+  "cloudfunctionRoot": "functions/",
   "debugOptions": {
     "hidedInDevtools": []
   },

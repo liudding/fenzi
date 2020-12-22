@@ -1,0 +1,53 @@
+<view class="edit-container">
+
+	<view class="">
+		<mp-form>
+			<mp-cell>
+				<input value="{{formData.amount}}" bindinput="inputChange" data-field="amount" type="number" class="weui-input amount" placeholder="0.00" />
+			</mp-cell>
+
+			<mp-cell title="亲友">
+				<input value="{{formData.contact.name}}" bindinput="inputChange" data-field="contact.name" class="weui-input person" placeholder="填写亲友" />
+			</mp-cell>
+
+
+			<picker mode="selector" value="{{formData.relationship}}" range="{{relationshipRange}}" bindchange="onRelationshipChange">
+				<mp-cell title="关系" footer="{{formData.contact.relationship}}" link hover></mp-cell>
+			</picker>
+
+			<block wx:if="{{formData.is_income}}">
+				<mp-cell title="事件">
+					<input value="{{formData.event}}" bindinput="inputChange" data-field="event" class="weui-input person" placeholder="如：我的婚礼" />
+				</mp-cell>
+			</block>
+
+			<block wx:else>
+				<picker mode="selector" value="{{formData.event}}" range="{{eventRange}}" bindchange="onEventChange">
+					<mp-cell title="事件" footer="{{formData.event}}" link hover></mp-cell>
+				</picker>
+
+			</block>
+
+
+
+
+			<picker mode="date" value="{{formData.date}}" bindchange="onDateChange">
+				<mp-cell title="时间" footer="{{formData.date}}" link hover></mp-cell>
+			</picker>
+
+			<mp-cell>
+				<textarea value="{{formData.note}}" bindinput="inputChange" data-field="note" class="weui-input note" placeholder="备注"></textarea>
+			</mp-cell>
+		</mp-form>
+
+	</view>
+
+
+
+	<view class="weui-btn-area">
+		<button class="c-btn c-btn__primary" bindtap="submitForm" hover-class="c-btn-hover">确定</button>
+
+		<button wx:if="{{formData._id}}" class="c-btn c-btn__danger delete-btn" bindtap="onTapDelete" hover-class="c-btn-hover">删除</button>
+	</view>
+
+</view>

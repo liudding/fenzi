@@ -1,0 +1,30 @@
+page {
+  background: #fff;
+
+  padding: 0px 0;
+}
+
+.edit-container {
+  overflow: hidden;
+}
+
+.amount {
+  height:40px;
+  font-size:30px;
+}
+
+.person {
+  text-align: right;
+}
+
+.delete-btn {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+
+.note {
+  /* width:100%; */
+  width: 750rpx;
+  height:60px;
+}

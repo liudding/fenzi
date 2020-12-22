@@ -1,0 +1,6 @@
+<view class='emptyset  emptyset__{{type}}'>
+  <text wx:if="{{icon}}" class="iconfont icon-{{icon}} emptyset_icon"></text>
+  <image wx:if="{{img}}" src="{{img}}" class='emptyset_img'></image>
+  <text class='emptyset__title'>{{title}}</text>
+  <text class='emptyset__info'>{{info}}</text>
+</view> 

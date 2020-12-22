@@ -1,0 +1,83 @@
+/* @import '/miniprogram_npm/weui-miniprogram/weui-wxss/dist/style/weui.wxss'; */
+@import '/styles/index.wxss';
+@import '/vendor/iconfont/iconfont.wxss';
+
+/* #000 */
+
+page {
+  --primary-color: #00b9f1;
+  --secondary-color: #b2b2b2;
+  --success-color: #2ECC71;
+  --danger-color: #F22613;
+
+  --income-color: #2ABB9B;
+  --outgoing-color: #E26A6A;
+}
+
+.bg-primary {
+  background: var(--primary-color);
+}
+
+.bg-income {
+  background: var(--income-color);
+}
+
+.bg-outgoing {
+  background: var(--outgoing-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-danger {
+  color: var(--danger-color);
+}
+
+.text-income {
+  color: var(--income-color);
+}
+
+.text-outgoing {
+  color: var(--outgoing-color);
+}
+
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-colomn {
+  flex-direction: column;
+}
+
+.justify-content-start {
+  justify-content: start;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-grow-1 {
+  flex-grow: 1 !important;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-50 {
+  width: 50%;
+}

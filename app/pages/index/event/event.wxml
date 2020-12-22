@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="header">
+    
+  </view>
+  <mp-cell wx:for="{{gifts}}" wx:key="key" bindtap="onTapGift" data-index="{{index}}"
+    link hover>
+    <view class="flex align-items-center">
+      <view class="flex-grow-1 flex flex-colomn" style="margin-left: 16px;">
+        <view>{{item.contact.name}}</view>
+        <view style="color: gray; font-size: 12px;">{{item.contact.relationship}}</view>
+      </view>
+      <view class="{{item.is_income ? 'text-income' : 'text-outgoing'}}" style="font-size: 20px;">{{item.amount}}</view>
+    </view>
+  </mp-cell>
+</view>
+
+<view class="fab fab-bottom-right">
+	<view bindtap="onTapCreate" class="iconfont icon-edit-2 bg-primary new-btn"></view>
+</view>

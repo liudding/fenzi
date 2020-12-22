@@ -1,0 +1,64 @@
+
+.gift {
+  /* height: 70px; */
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gift__head {
+  display: flex;
+  flex-direction: column;
+
+
+  /* background: red; */
+}
+
+.gift__head__infos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.name {
+  font-size: 20px;
+  line-height: 20px;
+}
+
+
+.relationship {
+  margin-left: 8px;
+  color: #888;
+
+  font-size: 8px;
+  background: #efefef;
+  padding: 0 4px;
+  color: gray;
+  border-radius: 4px;
+  height: 10px;
+  line-height: 10px;
+
+}
+
+.date {
+  color: gray;
+  margin-left: 8px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.gift__money {
+  /* background: blue; */
+  font-size: 20px;
+  color: #2b2b2b;
+  /* line-height: 40px; */
+}
+
+.event {
+  margin-top: 8px;
+  min-height:20px;
+  color: #6b6b6b;
+}
