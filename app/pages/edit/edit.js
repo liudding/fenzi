@@ -173,7 +173,7 @@ Page({
         content: gift.contact.name + ' ' + gift.note
       }
     }).then(res => {
-      if (res.errCode != 0) {
+      if (res.result.errCode !== 0) {
         wx.hideLoading()
 
         wx.showModal({

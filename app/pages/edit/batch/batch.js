@@ -82,22 +82,29 @@ Page({
       }
     }
 
+  
+
     // 确认
+
+    wx.cloud.callFunction({
+      name: 'checkTextSecurity',
+      data: {
+        content: this.data.value
+      }
+    }).then(res => {
+      if (res.result.errCode !== 0) {
+        wx.showModal({
+          title: "存在敏感内容",
+          content: "请检查修改后再次保存",
+          showCancel: false
+        });
+      }
+    })
 
     this.setData({gifts, showConfirm: true})
   },
 
   onConfirm() {
-    // const hasError = this.data.gifts.find(item => item.error)
-    // if (hasError) {
-    //   wx.showModal({
-    //     title: "提示",
-    //     content: "请填写数字",
-    //     showCancel: false
-    //   });
-    //   return;
-    // }
-
     wx.showLoading({
       title: "保存中..."
     });
