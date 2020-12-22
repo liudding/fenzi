@@ -6,8 +6,8 @@
 				<input value="{{formData.amount}}" bindinput="inputChange" data-field="amount" type="number" class="weui-input amount" placeholder="0.00" />
 			</mp-cell>
 
-			<mp-cell title="人物">
-				<input value="{{formData.contact.name}}" bindinput="inputChange" data-field="contact.name" class="weui-input person" placeholder="填写人物" />
+			<mp-cell title="亲友">
+				<input value="{{formData.contact.name}}" bindinput="inputChange" data-field="contact.name" class="weui-input person" placeholder="填写亲友" />
 			</mp-cell>
 
 

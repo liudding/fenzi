@@ -6,8 +6,8 @@
     </view>
      <view class="summary__detail">
      <view class="summary__detail__wrapper">
-      <view class="outgoing">给出：{{summary.outgoing}} 元</view>
-      <view class="income">收到：{{summary.income}} 元</view>
+      <view class="text-outgoing">送出：{{summary.outgoing}} 元</view>
+      <view class="text-income">收到：{{summary.income}} 元</view>
       <view class="sum">差值：{{summary.sum}} 元</view>
      </view>
       
@@ -15,20 +15,50 @@
   </view>
 
   <view class="brief-infos">
-    <view wx:for="{{briefInfos}}" wx:key="index" class="brief-item">
+    <!-- <view wx:for="{{briefInfos}}" wx:key="index" class="brief-item">
       <view class="brief-item__text">{{item.value}}
         <text style="font-size:12px;">{{item.unit}}</text>
       </view>
        <view class="brief-item__title">{{item.title}}</view>
+    </view> -->
+    <view class="brief-item">
+      <view class="brief-item__text"> {{outgoingCount}}
+        <text style="font-size:12px;">笔</text>
+      </view>
+       <view class="brief-item__title">送出</view>
     </view>
+    <view class="brief-item">
+      <view class="brief-item__text"> {{incomeCount}}
+        <text style="font-size:12px;">笔</text>
+      </view>
+       <view class="brief-item__title">收到</view>
+    </view>
+
+    <navigator class="brief-item">
+      <view class="brief-item__text"> {{contactCount}}
+        <text style="font-size:12px;">位</text>
+      </view>
+       <view class="brief-item__title">亲友</view>
+    </navigator>
+    <view class="brief-item">
+      <view class="brief-item__text"> {{eventCount}}
+        <text style="font-size:12px;">种</text>
+      </view>
+       <view class="brief-item__title">事件</view>
+    </view>
+    
   </view>
 
-  <!-- <view>
-    <view class="chart">
-      <canvas canvas-id="event-chart" class="pie-chart-canvas" style="height:150px;width:150px;"></canvas>
-    </view>
+ 
+  <view style="margin-top: 24px;">
+    <view class="text-secondary " style="padding-left:16px">送出</view>
+    <canvas canvas-id="outgoing-event-chart" style="height:300px;width:750rpx;"></canvas>
+  </view>
 
-  </view> -->
+  <view style="margin-top: 24px;">
+    <view class="text-secondary " style="padding-left:16px"> 收到</view>
+    <canvas canvas-id="income-event-chart" style="height:300px;width:750rpx;"></canvas>
+  </view>
 
 </view>
 

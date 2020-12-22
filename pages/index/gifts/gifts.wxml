@@ -1,0 +1,17 @@
+<view class="container">
+  <mp-cell wx:for="{{gifts}}" wx:key="key" bindtap="onTapGift" data-index="{{index}}"
+    link hover>
+    <view class="flex align-items-center">
+      <view class="icon {{item.is_income ? 'bg-income' : 'bg-outgoing'}}">{{item.icon}}</view>
+      <view class="flex-grow-1 flex flex-colomn" style="margin-left: 16px;">
+        <view>{{item.event}}</view>
+        <view style="color: gray; font-size: 12px;">{{item.date}}</view>
+      </view>
+      <view class="{{item.is_income ? 'text-income' : 'text-outgoing'}}" style="font-size: 20px;">{{item.amount}}</view>
+    </view>
+  </mp-cell>
+</view>
+
+<view class="fab fab-bottom-right">
+	<view bindtap="onTapCreate" class="iconfont icon-edit-2 bg-primary new-btn"></view>
+</view>

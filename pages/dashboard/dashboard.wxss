@@ -31,18 +31,6 @@
     font-size: 14px;
 }
 
-.summary__detail__wrapper {
-
-}
-
-.outgoing {
-    color: #EE7785;
-}
-
-.income {
-    color: #67D5B5;
-}
-
 
 .brief-infos {
     display: flex;

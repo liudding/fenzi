@@ -1,45 +1,96 @@
 <mp-navigation-bar show color="{{color}}" background="#fff" back="{{false}}">
-	<!-- <view bindtap="onTapSearch" slot="left" class="iconfont icon-plus-circle-fill add-icon"></view> -->
 	<mp-icon bindtap="onTapSearch" type="field" icon="search" color="gray" size="{{25}}" slot="left"></mp-icon>
-	<view bindtap="onTapFilter" slot="center" class="navi-title">
-		{{isIncome ? '收到的' : '给出的'}}</view>
+	<segment items="{{tabs}}" bindchange="onSegmentChange" slot="center"></segment>
 </mp-navigation-bar>
 
-<!-- <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar> -->
-
-
-<view class="container">
-	<view class="header">
-		<view>{{type}}</view>
-		<view class="total">
-			<text style="color: #b2b2b2;font-size:13px;line-height: 40px;">合计</text> {{total}}
-			<text style="color: #b2b2b2;font-size:12px;line-height: 40px;">元</text>
-		</view>
-	</view>
-
+<view class="container" style="padding: 0 16px;">
 	<view class="fenzis">
+		<!-- 按亲友展示 -->
+		<view hidden="{{currentTab !== 0}}">
+			<view class="header" style="margin:16px 0;">
+				<view class="flex flex-colomn w-50">
+					<text class="text-income"  style="font-size:13px;">收到</text>
+					<view class="flexd" style="font-size: 30px;">
+						{{incomeTotal}}
+						<text style="color: #b2b2b2;font-size:12px;">元</text>
+					</view>
 
-		<!-- 收到的 -->
-		<view hidden="{{!isIncome}}">
-			<view wx:for="{{groups}}" wx:key="event" data-index="{{index}}">
-				<gift-group group="{{item}}" bind:tapItem="onTapGroupedGift" bind:tapAddItem="onTapAddGroupedGift"></gift-group>
+				</view>
+
+				<view class="flex flex-colomn w-50">
+					<text class="text-outgoing" style="font-size:13px;">送出</text>
+					<view class="flexd" style="font-size: 30px;">
+						{{outgoingTotal}}
+						<text style="color: #b2b2b2;font-size:12px;">元</text>
+					</view>
+
+				</view>
 			</view>
+
+			<view class="text-secondary " style="font-size:13px; padding:0 16px;">亲友列表</view>
+
+			<mp-cell wx:for="{{contacts}}" wx:key="name" bindtap="onTapContact" data-index="{{index}}" link hover>
+				<view class="contact">
+					<view class="flex align-items-center w-100">
+						<view style="font-size:20px;">{{item.name}}</view>
+						<view class="label"
+							style="margin-left: 8px;">
+							{{item.relationship}}</view>
+					</view>
+
+					<view class="flex align-items-center">
+						<view wx:for="{{item.gifts}}" wx:for-item="gift" wx:for-index="idx" wx:key="_id" wx:if="{{idx <= 3}}"
+							class="flex {{gift.is_income ? 'text-income' : 'text-outgoing'}}"
+							style="margin-right: 8px;font-size:12px;">
+							<view class="">{{gift.is_income ? '+' : '-'}}</view>
+							<view style="margin-left:2px;">{{gift.amount}}</view>
+						</view>
+
+						<view wx:if="{{item.gifts.length > 3}}"
+							style="font-size: 8px;background:#efefef;padding: 0 4px;color:gray;border-radius:4px;height: 10px;line-height:10px;">
+							...</view>
+					</view>
+				</view>
+			</mp-cell>
 		</view>
-	
+
 
 		<!-- 给出的 -->
-		<view hidden="{{isIncome}}">
-			<mp-cell wx:for="{{gifts}}" wx:key="key" bindtap="onTapGift" bindlongpress="onLongPressGift" data-index="{{index}}" link
-				hover>
+		<view hidden="{{currentTab !== 1}}">
+			<mp-cell wx:for="{{gifts}}" wx:key="key" bindtap="onTapGift" bindlongpress="onLongPressGift"
+				data-index="{{index}}" link hover>
 				<gift gift="{{item}}"></gift>
 			</mp-cell>
 		</view>
+
+		<!-- 收到的 -->
+		<view hidden="{{currentTab !== 2}}">
+			<view class="text-secondary " style="font-size:13px; padding:16px;">事件列表</view>
+
+			<mp-cell wx:for="{{myEvents}}" wx:key="event" bindtap="onTapEvent" data-index="{{index}}" link hover>
+				<view class="flex align-items-center event">
+					<view class="icon">
+						{{item.icon}}
+					</view>
+
+					<view class="flex flex-colomn flex-grow-1" style="margin-left: 16px;">
+						<view style="font-size:20px;">{{item.event}}</view>
+						<view class="text-secondary" style="font-size: 12px;">{{item.gifts.length}} 笔</view>
+					</view>
+
+					<view  style="font-size: 20px;">{{item.total}}</view>
+				</view>
+			</mp-cell>
+		</view>
+
+
+
 
 	</view>
 </view>
 
 <view class="fab fab-bottom-right">
-	<view bindtap="onTapCreate" class="iconfont icon-edit-2 new-btn"></view>
+	<view bindtap="onTapCreate" class="iconfont icon-edit-2 bg-primary new-btn"></view>
 </view>
 
 

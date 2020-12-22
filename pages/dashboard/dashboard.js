@@ -1,4 +1,5 @@
 var wxCharts = require('../../vendor/wxcharts/wxcharts.js');
+import { groupBy, sumBy } from '../../utils/util'
 
 const app = getApp();
 
@@ -13,37 +14,18 @@ Page({
       outgoing: 0,
       sum: -0
     },
-
-    briefInfos: [{
-      title: '给出',
-      unit: '笔',
-      value: '0'
-    },{
-      title: '收到',
-      value: '0',
-      unit: '笔'
-    },{
-      title: '联系人',
-      value: '0',
-      unit: '位'
-    },{
-      title: '事件',
-      value: '0',
-      unit: '种'
-    }],
-
     hasData: true
   },
 
 
   onLoad: function (options) {
-   
+
   },
 
-  onShow: function() {
+  onShow: function () {
 
     this.updateUI();
-  }, 
+  },
 
   getEvents(gifts) {
     let events = gifts.map(item => item.event);
@@ -61,7 +43,7 @@ Page({
   updateUI() {
 
     let gifts = app.globalData.gifts;
-   
+
     if (gifts.length === 0) {
       this.setData({
         hasData: false
@@ -84,48 +66,116 @@ Page({
         outgoing: outgoings_total,
         sum: incomes_total - outgoings_total
       },
-      briefInfos: [{
-        title: '给出',
-        unit: '笔',
-        value: outgoings.length
-      },{
-        title: '收到',
-        value: incomes.length,
-        unit: '笔'
-      },{
-        title: '联系人',
-        value: app.globalData.contacts.length,
-        unit: '位'
-      },{
-        title: '事件',
-        value: events.length,
-        unit: '种'
-      }]
+      incomeCount: incomes.length,
+      outgoingCount: outgoings.length,
+      contactCount: app.globalData.contacts.length,
+      eventCount: events.length
     })
 
     let pieChart = new wxCharts({
       animation: false,
       canvasId: 'pieChart',
       type: 'pie',
-      series: [
-        {
-          name: '收到',
-          data: incomes_total,
-          color: '#67D5B5'
-      },{
-          name: '给出',
-          data: outgoings_total,
-          color: '#EE7785'
-      },],
+      series: [{
+        name: '收到',
+        data: incomes_total,
+        color: '#2ABB9B'
+      }, {
+        name: '送出',
+        data: outgoings_total,
+        color: '#E26A6A'
+      }, ],
       width: 150,
       height: 150,
       dataLabel: false,
       legend: false
-  });
+    });
+
+    this.updateOutgoingEventChart()
+
+    this.updateIncomeEventChart()
   },
 
-  updateEventChart() {
+  updateOutgoingEventChart() {
+    let outgoings = app.globalData.sentGifts;
 
+    if (outgoings.length === 0) {
+      return;
+    }
+
+    let group = groupBy(outgoings, 'event');
+
+    let events = []
+    for (let key in group) {
+      let amount = sumBy(group[key], 'amount')
+      events.push({
+        event: key,
+        amount
+      })
+    }
+
+    const series = events.map(item => {
+      return {
+        name: item.event,
+        data: item.amount,
+        format: () => {
+          return item.event + ' ' + item.amount + '元'
+        }
+      }
+    })
+
+    let pieChart = new wxCharts({
+      animation: false,
+      canvasId: 'outgoing-event-chart',
+      type: 'pie',
+      background: '#FF7700',
+      series: series,
+      width: app.device.screenWidth,
+      height: 300,
+      dataLabel: true,
+      legend: false
+    });
+  },
+
+  updateIncomeEventChart() {
+    let gifts = app.globalData.receivedGifts;
+
+    if (gifts.length === 0) {
+      return;
+    }
+
+    let group = groupBy(gifts, 'event');
+
+    let events = []
+    for (let key in group) {
+      let amount = sumBy(group[key], 'amount')
+      events.push({
+        event: key,
+        amount
+      })
+    }
+
+    const series = events.map(item => {
+      return {
+        name: item.event,
+        data: item.amount,
+        format: () => {
+          return item.event + " " + item.amount + '元'
+        }
+      }
+    })
+
+    let pieChart = new wxCharts({
+      animation: false,
+      canvasId: 'income-event-chart',
+      type: 'pie',
+      background: '#FF7700',
+      series: series,
+      width: app.device.screenWidth,
+      height: 300,
+      dataLabel: true,
+      legend: false
+    });
   },
 
   onShareAppMessage: function () {

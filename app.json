@@ -5,7 +5,10 @@
     "pages/edit/edit",
     "pages/me/me",
     "pages/search/search",
-    "pages/me/export/export"
+    "pages/me/export/export",
+    "pages/index/gifts/gifts",
+    "pages/index/event/event",
+    "pages/edit/batch/batch"
   ],
   "tabBar": {
     "color": "red",

@@ -1,5 +1,4 @@
 import { parseTime, deepClone } from "../../utils/util.js";
-import uuid from "../../utils/uid.js";
 import { updateCache } from "../../utils/index.js";
 
 const app = getApp();
@@ -108,7 +107,7 @@ Page({
     if (!this.data.formData.contact.name) {
       wx.showModal({
         title: "提示",
-        content: "请填写人物",
+        content: "请填写亲友名字",
         showCancel: false
       });
       return;
@@ -117,7 +116,7 @@ Page({
     if (!this.data.formData.contact.relationship) {
       wx.showModal({
         title: "提示",
-        content: "请选择与人物的关系",
+        content: "请选择与该亲友的关系",
         showCancel: false
       });
       return;
@@ -132,7 +131,7 @@ Page({
       return;
     }
 
-    if (this.data.formData.amount > 1000000) {
+    if (this.data.formData.amount > 10000000) {
       wx.showModal({
         title: "土豪",
         content: "咱们做个朋友吧",
@@ -183,7 +182,7 @@ Page({
   },
 
   resolveContact(contact) {
-    if (contact.id) return contact;
+    // if (contact.id) return contact;
 
     // 用户自己填写的联系人
     // 作查重检测
@@ -195,8 +194,8 @@ Page({
 
     if (matchedContacts.length > 1) {
       wx.showModal({
-        title: "人物重名了",
-        content: `你有多个叫 ${contact.name}的联系人`,
+        title: "重名了",
+        content: `你有多个叫 ${contact.name}的亲友`,
         showCancel: false
       });
       return;
@@ -218,7 +217,7 @@ Page({
       contact = matchedContact;
     } else {
       // 新建联系人
-      contact.id = uuid();
+      // contact.id = uuid();
 
       app.globalData.contacts.push(contact)
     }

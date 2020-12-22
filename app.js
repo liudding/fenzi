@@ -1,5 +1,4 @@
 //app.js
-
 require('./utils/navigate/index.js');
 
 import {
@@ -132,8 +131,6 @@ App({
     return gifts;
   },
 
-
-
   _contacts(gifts) {
     let contactMap = {};
 
@@ -142,11 +139,11 @@ App({
         return arr;
       }
       
-      if (contactMap[cur.contact.id]) {
+      if (contactMap[cur.contact.name]) {
         return arr;
       }
 
-      contactMap[cur.contact.id] = cur.contact
+      contactMap[cur.contact.name] = true
 
       arr.push(Object.assign({}, cur.contact));
 
@@ -197,17 +194,19 @@ App({
     gifts: [],
     sentGifts: [],
     receivedGifts: [],
-    groupedReceivedGifts: [],
+    // groupedReceivedGifts: [],
 
     contacts: [],
-    debugModel: device.brand === "devtools"
+    debugModel: false,//device.brand === "devtools"
   },
+
+  device,
 
   onGiftsChanged() {
     this.globalData.contacts = this._contacts(this.globalData.gifts);
     this.globalData.sentGifts = this._sentGifts(this.globalData.gifts);
     this.globalData.receivedGifts = this._receivedGifts(this.globalData.gifts);
-    this.globalData.groupedReceivedGifts = this._groupedReceivedGifts(this.globalData.gifts);
+    // this.globalData.groupedReceivedGifts = this._groupedReceivedGifts(this.globalData.gifts);
   },
 
   deleteGift(gift) {

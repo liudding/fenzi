@@ -7,7 +7,7 @@
   		</view>
 
   		<view class="event">
-  			<text>{{gift.event}}</text>
+  			<text>{{gift.icon}}{{gift.event}}</text>
   		</view>
   	</view>
 

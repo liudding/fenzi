@@ -6,27 +6,25 @@ const db = wx.cloud.database()
 const giftCollection = db.collection('gift')
 
 import {
-  getSettings
-} from '../../utils/wxUtils.js';
+  groupBy
+} from '../../utils/util.js';
 import {
   updateCache
 } from "../../utils/index.js";
+
+import decideIconOfEvent from '../../utils/eventIcon'
 
 
 Page({
   data: {
     title: '送出的',
     total: 0,
-    isIncome: false,
     gifts: [],
-    groups: [],
+    myEvents: [],
+    contacts: [],
 
-    slideButtons: [{
-      text: '编辑',
-    }, {
-      type: 'warn',
-      text: '删除',
-    }],
+    tabs: [{title: '亲友'},{title: '送出'}, {title: '收到'}],
+    currentTab: 0,
 
     showPin: false
   },
@@ -46,7 +44,7 @@ Page({
     // this.allGifts = app.globalData.gifts
 
     app.giftsReadyCallback = (res) => {
-      console.log('giftsReadyCallback called');
+      // console.log('giftsReadyCallback called');
       // that.allGifts = app.globalData.gifts
 
       that.updateUI();
@@ -76,73 +74,136 @@ Page({
   },
 
 
-  updateUI(isIncome = false) {
-    let gifts =  app.globalData.sentGifts;
-    let groups = app.globalData.groupedReceivedGifts;
+  getContacts() {
+    let groups = groupBy(app.globalData.gifts, 'contact.name')
 
-    const iconMap = {
-      '参加婚礼': "👰🏻",
-      '参加葬礼': "👼",
-      '宝宝出生': "🤱🏻",
-      '宝宝满月': "👶🏻",
-      '宝宝周岁': "🧒🏻",
-      '老人过寿': "🎂",
-      '金榜题名': "🥇",
-      '孩子升学': "🧑🏻‍🎓",
-      '乔迁新居': "🏡",
-      '新店开业': "🏬",
-      '探望病人': "🏥",
+    let contacts = [];
+
+    for (let key in groups) {
+      let gifts = groups[key];
+
+      let contact = Object.assign({}, gifts[0].contact)
+
+      contact.gifts = gifts
+
+      contacts.push(contact);
     }
+
+    return contacts
+  },
+
+  getMyEvents() {
+    const groups = {};
+
+    for (let gift of app.globalData.receivedGifts) {
+      if (!gift.is_income) {
+        continue;
+      }
+
+      if (!groups.hasOwnProperty(gift.event)) {
+        groups[gift.event] = {
+          event: gift.event,
+          icon: decideIconOfEvent(gift.event),
+          date: gift.date,
+          is_income: true,
+          total: 0,
+          gifts: []
+        };
+      }
+
+      groups[gift.event].gifts.push(gift);
+      groups[gift.event].total += gift.amount;
+    }
+
+    const arr = [];
+    for (let key in groups) {
+      arr.push(groups[key]);
+    }
+
+    return arr;
+  },
+
+
+  updateUI() {
+    let gifts =  app.globalData.sentGifts;
+    let myEvents = this.getMyEvents();
+
+    let contacts = this.getContacts();
 
     gifts = gifts.map(item => {
-      const g = Object.assign({}, item);
+      item.icon = decideIconOfEvent(item.event)
 
-      g.event = (iconMap[g.event] || '') + g.event
-      return g;
+      return item;
     })
 
-    let total = 0;
-    if (isIncome) {
-      total = groups.reduce((arr, cur) => {
-        return arr + cur.total;
-      }, 0)
-    } else {
-      total = gifts.reduce((arr, cur) => {
-        return arr + cur.amount;
-      }, 0)
-    }
+    let incomeTotal = myEvents.reduce((arr, cur) => {
+      return arr + cur.total;
+    }, 0);
+    let outgoingTotal = gifts.reduce((arr, cur) => {
+      return arr + cur.amount;
+    }, 0)
 
     this.setData({
-      isIncome,
       gifts,
-      groups,
-      total
+      myEvents,
+      contacts,
+      outgoingTotal,
+      incomeTotal
     })
   },
 
-  onTapFilter() {
+  onSegmentChange(e) {
+    const index = e.detail;
 
-    let isIncome = !this.data.isIncome
+    this.setData({
+      currentTab: index
+    })
 
-    this.updateUI(isIncome)
+    if (index === 0) {
+
+    } else if (index === 1) {
+
+    } else if (index === 2) {
+
+    }
   },
 
-  onTapGroup(e) {
+  onTapContact(e) {
     let index = e.currentTarget.dataset.index
-    let group = this.data.groups[index]
+    let contact = this.data.contacts[index]
 
-    const that = this;
-
-    wx.naviTo('/pages/event/event', group, gift => {
-
-      // if (!gift || !gift._id) {
-      //   return
-      // }
-
-      // that.onGiftDataChanged(gift)
+    wx.navigateTo({
+      url: '/pages/index/gifts/gifts',
+      events: {
+        giftChanged: (gift) => {
+          this.onGiftDataChanged(gift)
+        }
+      },
+      success: (res) => {
+        res.eventChannel.emit('acceptDataFromOpenerPage', contact)
+      }
     })
 
   },
+
+  onTapEvent(e) {
+    let index = e.currentTarget.dataset.index
+    let event = this.data.myEvents[index]
+
+    wx.navigateTo({
+      url: '/pages/index/event/event',
+      events: {
+        giftChanged: (gift) => {
+          this.onGiftDataChanged(gift)
+        }
+      },
+      success: (res) => {
+        res.eventChannel.emit('acceptDataFromOpenerPage', event)
+      }
+    })
+
+  },
+
 
   onTapAddGroupedGift(e) {
     let group = e.detail

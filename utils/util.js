@@ -115,10 +115,49 @@ const randomInt = (min, max) => {
   return Math.floor(min + Math.floor(Math.random() * (max - min)))
 }
 
+const getValue = (o, keyPath) => {
+  const path = keyPath.split('.')
+
+  let v = o;
+
+  for (let k of path) {
+    v = v[k];
+  }
+
+  return v;
+}
+
+const groupBy = (collection, key) => {
+  const groups = {};
+
+  for (let item of collection) {
+    let v = getValue(item, key)
+    if (!groups[v]) {
+      groups[v] = []
+    }
+
+    groups[v].push(item)
+  }
+
+  return groups
+}
+
+const sumBy = (collection, key) => {
+  let total = 0;
+
+  collection.forEach(item => {
+    total += item[key];
+  })
+
+  return total
+}
+
 
 module.exports = {
   formatTime: formatTime,
   parseTime,
   deepClone,
-  randomInt
+  randomInt,
+  groupBy,
+  sumBy
 }

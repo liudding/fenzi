@@ -1,0 +1,4 @@
+<view>
+
+  <mp-cell wx:for="{{contacts}}" wx:key="id" title="{{ item.name }}" footer="{{item.relationship}}"></mp-cell>
+</view>

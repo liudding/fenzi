@@ -9,7 +9,7 @@ Page({
     let gifts = wx.getStorageSync('GIFTS')
 
     let text = gifts.reduce((arr, cur) => {
-      let line = `${cur.contact.name}\t${cur.contact.relationship}\t${cur.amount}\t${cur.event}\t${cur.is_income ? '收到' : '给出'}\t${cur.date} \t${cur.note || ''}\n`
+      let line = `${cur.contact.name}\t${cur.contact.relationship}\t${cur.amount}\t${cur.event}\t${cur.is_income ? '收到' : '送出'}\t${cur.date} \t${cur.note || ''}\n`
       return arr + line
     }, '')
 
