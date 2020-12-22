@@ -1,5 +1,10 @@
-import { parseTime, deepClone } from "../../utils/util.js";
-import { updateCache } from "../../utils/index.js";
+import {
+  parseTime,
+  deepClone
+} from "../../utils/util.js";
+import {
+  updateCache
+} from "../../utils/index.js";
 
 const app = getApp();
 
@@ -34,10 +39,12 @@ Page({
     ]
   },
 
-  onLoad: function(options) {
+  onLoad: function (options) {
     let gift = wx.getPageData();
 
-    wx.setNavigationBarTitle({ title: gift.is_income ? '收份子' : '给份子' });
+    wx.setNavigationBarTitle({
+      title: gift.is_income ? '收份子' : '给份子'
+    });
 
     this.data.formData = Object.assign(this.data.formData, gift);
     this.setData({
@@ -47,7 +54,9 @@ Page({
   },
 
   inputChange(e) {
-    const { field } = e.currentTarget.dataset;
+    const {
+      field
+    } = e.currentTarget.dataset;
 
     if (field === "contact.name") {
       let contact = app.globalData.contacts.find(
@@ -156,29 +165,59 @@ Page({
     const isNewGift = !gift._id
 
     let id = gift._id
-    this.save(gift).then(res => {
-      
-      gift._id = res._id || id;
 
-      updateCache(gift);
 
-      if (isNewGift) {
-        app.addGift(gift)
-      } else {
-        app.updateGift(gift)
+    wx.cloud.callFunction({
+      name: 'checkTextSecurity',
+      data: {
+        content: gift.contact.name + ' ' + gift.note
+      }
+    }).then(res => {
+      if (res.errCode != 0) {
+        wx.hideLoading()
+
+        wx.showModal({
+          title: "存在敏感内容",
+          content: "请检查修改后再次保存",
+          showCancel: false
+        });
+        return
       }
 
-      wx.hideLoading();
-      
-      wx.naviCallback(gift);
+      this.save(gift).then(res => {
 
-      wx.showToast({
-        title: "保存成功",
-        icon: "success",
-        duration: 2000
+        gift._id = res._id || id;
+
+        updateCache(gift);
+
+        if (isNewGift) {
+          app.addGift(gift)
+        } else {
+          app.updateGift(gift)
+        }
+
+        wx.hideLoading();
+
+        wx.naviCallback(gift);
+
+        wx.showToast({
+          title: "保存成功",
+          icon: "success",
+          duration: 2000
+        });
+        wx.naviBack();
       });
-      wx.naviBack();
-    });
+    }).catch(err => {
+      wx.hideLoading();
+      wx.showModal({
+        title: "出错了",
+        content: "请稍后再试",
+        showCancel: false
+      });
+    })
+
+
+
   },
 
   resolveContact(contact) {
@@ -291,5 +330,5 @@ Page({
       });
   },
 
-  onShareAppMessage: function() {}
+  onShareAppMessage: function () {}
 });

@@ -1,2 +1,0 @@
-<!-- <mp-searchbar bindselectresult="selectResult" search="{{search}}" focus></mp-searchbar> -->
-<searchbar value="{{value}}" bindselectresult="selectResult" search="{{search}}" placeholder="搜索人名、事件、关系" focus></searchbar>

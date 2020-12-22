@@ -29,14 +29,12 @@
 			</block>
 
 
-
-
 			<picker mode="date" value="{{formData.date}}" bindchange="onDateChange">
 				<mp-cell title="时间" footer="{{formData.date}}" link hover></mp-cell>
 			</picker>
 
 			<mp-cell>
-				<textarea value="{{formData.note}}" bindinput="inputChange" data-field="note" class="weui-input note" placeholder="备注"></textarea>
+				<textarea value="{{formData.note}}" bindinput="inputChange" data-field="note" class="weui-input note" maxlength="100" placeholder="备注"></textarea>
 			</mp-cell>
 		</mp-form>
 

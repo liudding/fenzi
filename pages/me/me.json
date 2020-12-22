@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "mp-cell": "weui-miniprogram/cell/cell"
-  },
-  "navigationBarTitleText": "我的",
-  "navigationStyle": "default"
-}

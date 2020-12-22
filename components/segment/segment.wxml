@@ -1,9 +1,0 @@
-<view class="segment-container">
-  <view wx:for="{{items}}" wx:key="title" bindtap="onTapItem" data-index="{{index}}" class="segment-item {{index === selectedIndex ? 'selected-item' : ''}}">
-    {{item.title}}
-  </view>
-
-  <view class="highlight-wrapper">
-    <view class="highlight" style="width:{{100 / items.length}}%;left:{{selectedIndex * 100/3}}%;"></view>
-  </view>
-</view>

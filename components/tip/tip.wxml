@@ -1,5 +1,0 @@
-<view class="container">
-  <view class="bubble top-left">
-    <text class="txt">{{text}}</text>
-  </view>
-</view>
