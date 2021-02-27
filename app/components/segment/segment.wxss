@@ -18,11 +18,11 @@
   padding: 2px 5px;
 
   font-size: 12px;
-  color: #888;
+  color: #b2b2b2;
 }
 
 .segment-item.selected-item {
-  color: #000;
+  color: #F05A5A;
   font-weight: 700;
 }
 
