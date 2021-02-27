@@ -3,7 +3,7 @@
 	<segment items="{{tabs}}" selected="{{currentTab}}" bindchange="onSegmentChange" slot="center"></segment>
 </mp-navigation-bar>
 
-<view class="container" style="padding: 0 16px;">
+<view class="container">
 	<view class="fenzis">
 		<!-- 按亲友展示 -->
 		<view hidden="{{currentTab !== 0}}">

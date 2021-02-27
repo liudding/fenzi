@@ -1,13 +1,16 @@
   <view class="gift">
+		<view class="icon-wrapper">
+			<view>{{gift.icon}}</view>	
+		</view>
   	<view class="gift__head">
   		<view class="gift__head__infos">
   			<text class="name">{{gift.contact.name}}</text>
   			<text class="relationship">{{gift.contact.relationship}}</text>
-  			<text class="date">{{gift.date}}</text>
   		</view>
 
   		<view class="event">
-  			<text>{{gift.icon}}{{gift.event}}</text>
+				<text>{{gift.event}}</text>
+				<text class="date">{{gift.date}}</text>
   		</view>
   	</view>
 
