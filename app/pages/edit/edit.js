@@ -62,6 +62,14 @@ Page({
   onLoad: function (options) {
     let gift = wx.getPageData();
 
+    if (!gift) {
+      wx.showModal({
+        title: "出错了",
+        content: "请重新打开小程序，再次尝试",
+      })
+      return
+    }
+
     wx.setNavigationBarTitle({
       title: gift.is_income ? '收份子' : '给份子'
     });
