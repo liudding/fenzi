@@ -5,6 +5,17 @@ Component({
     items: {
       type: Array,
       value: []
+    },
+    selected: {
+      type: Number,
+      value: 0,
+    }
+  },
+  observers: {
+    selected(val) {
+      this.setData({
+        selectedIndex: val
+      })
     }
   },
 

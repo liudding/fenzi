@@ -1,6 +1,6 @@
 <mp-navigation-bar show color="{{color}}" background="#fff" back="{{false}}">
 	<mp-icon bindtap="onTapSearch" type="field" icon="search" color="gray" size="{{25}}" slot="left"></mp-icon>
-	<segment items="{{tabs}}" bindchange="onSegmentChange" slot="center"></segment>
+	<segment items="{{tabs}}" selected="{{currentTab}}" bindchange="onSegmentChange" slot="center"></segment>
 </mp-navigation-bar>
 
 <view class="container" style="padding: 0 16px;">

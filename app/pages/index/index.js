@@ -24,7 +24,7 @@ Page({
     contacts: [],
 
     tabs: [{title: '亲友'},{title: '送出'}, {title: '收到'}],
-    currentTab: 0,
+    currentTab: 1,
 
     showPin: false
   },
