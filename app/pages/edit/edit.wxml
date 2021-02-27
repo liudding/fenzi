@@ -4,6 +4,9 @@
 		<mp-form>
 			<mp-cell>
 				<input value="{{formData.amount}}" bindinput="inputChange" data-field="amount" type="number" class="weui-input amount" placeholder="0.00" />
+				<view class="quick-pick" slot="footer">
+					<button wx:for="{{commonMoney}}" :key="value" bindtap="onTapQuickPick" data-index="{{index}}" class="quick-pick-item ">{{item.name}}</button>
+				</view>
 			</mp-cell>
 
 			<mp-cell title="亲友">

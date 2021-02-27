@@ -23,6 +23,26 @@ Page({
     },
     relationshipRange: ["亲戚", "朋友", "同学", "同事", "邻里", "其他"],
 
+    commonMoney: [{
+      name: '2 百',
+      value: 200
+    }, {
+      name: '5 百',
+      value: 500
+    }, {
+      name: '6 百',
+      value: 600
+    }, {
+      name: '8 百',
+      value: 800
+    }, {
+      name: '1 千',
+      value: 1000
+    },{
+      name: '2 千',
+      value: 2000
+    }],
+
     eventRange: [
       "参加婚礼",
       "参加葬礼",
@@ -51,6 +71,14 @@ Page({
       formData: this.data.formData
     });
 
+  },
+
+  onTapQuickPick(e) {
+    const money = this.data.commonMoney[e.currentTarget.dataset.index]
+
+    this.setData({
+      [`formData.amount`]: money.value
+    });
   },
 
   inputChange(e) {

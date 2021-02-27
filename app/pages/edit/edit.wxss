@@ -9,8 +9,8 @@ page {
 }
 
 .amount {
-  height:40px;
-  font-size:30px;
+  height: 40px;
+  font-size: 30px;
 }
 
 .person {
@@ -22,9 +22,28 @@ page {
   font-size: 14px;
 }
 
-
 .note {
   /* width:100%; */
   width: 750rpx;
-  height:60px;
+  height: 60px;
+}
+
+.quick-pick {
+  display: flex;
+  width: 100px;
+  flex-wrap: wrap;
+}
+
+.quick-pick-item {
+  min-width: 30px;
+  border: none;
+  padding: 0 4px;
+  margin: 2px 2px 0 0;
+  box-sizing: border-box;
+  font-size: 12px;
+  line-height: 20px;
+  background: transparent;
+  box-shadow: none;
+  color: darkgray;
+
 }
