@@ -10,7 +10,7 @@ page {
   --success-color: #2ECC71;
   --danger-color: #F22613;
 
-  --income-color: #2ABB9B;
+  --income-color: #00b9f1;
   --outgoing-color: #E26A6A;
 }
 

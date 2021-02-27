@@ -158,14 +158,12 @@ Page({
     this.setData({
       currentTab: index
     })
+  },
 
-    if (index === 0) {
-
-    } else if (index === 1) {
-
-    } else if (index === 2) {
-
-    }
+  switchTab(e) {
+    this.setData({
+      currentTab: +e.currentTarget.dataset.index
+    })
   },
 
   onTapContact(e) {
