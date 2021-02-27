@@ -20,9 +20,21 @@ Component({
   },
 
   data: {
-    selectedIndex:0
+    selectedIndex: 0
   },
 
+  lifetimes: {
+    attached: function () {
+      this.setData({
+        selectedIndex: this.data.selected
+      })
+    },
+  },
+  attached: function () {
+    this.setData({
+      selectedIndex: this.data.selected
+    })
+  },
 
   methods: {
     onTapItem(e) {

@@ -17,8 +17,6 @@ import decideIconOfEvent from '../../utils/eventIcon'
 
 Page({
   data: {
-    title: '送出的',
-    total: 0,
     gifts: [],
     myEvents: [],
     contacts: [],
