@@ -228,8 +228,6 @@ App({
   updateGift(gift) {
     let idx = this.globalData.gifts.findIndex(item => item._id === gift._id);
 
-    console.log('========');
-
     if (idx < 0) return;
 
     this.globalData.gifts.splice(idx, 1, gift);

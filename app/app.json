@@ -19,14 +19,14 @@
       {
         "pagePath": "pages/index/index",
         "text": "",
-        "iconPath": "/images/list.png",
-        "selectedIconPath": "/images/list_selected.png"
+        "iconPath": "/images/packet.png",
+        "selectedIconPath": "/images/packet_selected.png"
       },
       {
         "pagePath": "pages/dashboard/dashboard",
         "text": "",
-        "iconPath": "/images/dashboard.png",
-        "selectedIconPath": "/images/dashboard_selected.png"
+        "iconPath": "/images/chart.png",
+        "selectedIconPath": "/images/chart_selected.png"
       },
       {
         "pagePath": "pages/me/me",
