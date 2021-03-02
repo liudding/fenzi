@@ -41,3 +41,7 @@ export function defaultEvents() {
     "其他"
   ]
 }
+
+export function defaultRelationships() {
+  return ["亲戚", "朋友", "同学", "同事", "邻里", "其他"];
+}

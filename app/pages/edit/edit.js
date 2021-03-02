@@ -21,8 +21,7 @@ Page({
       },
       date: parseTime(new Date(), "{y}-{m}-{d}")
     },
-    relationshipRange: ["亲戚", "朋友", "同学", "同事", "邻里", "其他"],
-
+   
     commonMoney: [{
       name: '2 百',
       value: 200
@@ -43,6 +42,7 @@ Page({
       value: 2000
     }],
 
+    relationshipRange: app.globalData.preferences.relationships,
     eventRange: app.globalData.preferences.events
   },
 

@@ -4,7 +4,10 @@ require('./utils/navigate/index.js');
 import {
   getSettings
 } from '/utils/wxUtils.js';
-import { defaultEvents } from '/utils/index.js'
+import {
+  defaultEvents,
+  defaultRelationships
+} from '/utils/index.js'
 // import {
 //   makeFakeData
 // } from './utils/fake'
@@ -31,7 +34,7 @@ App({
 
     this._fetchAllGifts().then(allgifts => {
       that.globalData.gifts = allgifts
-     
+
       that.onGiftsChanged()
 
       wx.setStorage({
@@ -45,7 +48,10 @@ App({
     })
 
     this._fetchPreferences().then(res => {
-      that.globalData.preferences = (res.list || res.data)[0] || { events: defaultEvents()};
+      that.globalData.preferences = (res.list || res.data)[0] || {
+        events: defaultEvents(),
+        relationships: defaultRelationships()
+      };
     });
 
     getSettings().then(authSetting => {
@@ -84,7 +90,7 @@ App({
 
     return this._sortGiftByDate(gs);
   },
-  
+
 
   _groupedReceivedGifts(gifts) {
     const groups = {};
@@ -140,10 +146,10 @@ App({
     let contactMap = {};
 
     let contacts = gifts.reduce((arr, cur) => {
-      if (! cur.contact) {
+      if (!cur.contact) {
         return arr;
       }
-      
+
       if (contactMap[cur.contact.name]) {
         return arr;
       }
@@ -200,14 +206,17 @@ App({
 
   globalData: {
     userInfo: null,
-    preferences: { events: defaultEvents(), },
+    preferences: {
+      events: defaultEvents(),
+      relationships: defaultRelationships()
+    },
     gifts: [],
     sentGifts: [],
     receivedGifts: [],
     // groupedReceivedGifts: [],
 
     contacts: [],
-    debugModel: false,//device.brand === "devtools"
+    debugModel: false, //device.brand === "devtools"
   },
 
   device,
