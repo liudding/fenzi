@@ -93,4 +93,4 @@
 </view>
 
 
-<pin-prompt auto name="礼金份子钱" logo="../../images/logo.png"></pin-prompt>
+<pin-prompt auto customNavbar background="#e26a6acc" duration="10" color="#fff" name="礼金份子钱" logo="../../images/logo.png"></pin-prompt>

@@ -3,7 +3,7 @@
     "mp-navigation-bar": "/miniprogram_npm/weui-miniprogram/navigation-bar/navigation-bar",
     "mp-cell": "/miniprogram_npm/weui-miniprogram/cell/cell",
     "mp-icon": "/miniprogram_npm/weui-miniprogram/icon/icon",
-    "pin-prompt": "/components/pin-prompt/pin-prompt",
+    "pin-prompt": "/miniprogram_npm/wx-pin-prompt/pin-prompt",
     "gift": "/components/giftcell/gift",
     "gift-group": "/components/gift-group/gift-group",
     "segment": "/components/segment/segment"
