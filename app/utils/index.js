@@ -22,3 +22,22 @@ export function updateCache(data) {
     console.error('updateCache error: ', err)
   }
 }
+
+
+export function defaultEvents() {
+  return [
+    "参加婚礼",
+    "宝宝出生",
+    "宝宝满月",
+    "宝宝周岁",
+    "压岁钱",
+    "孩子升学",
+    "金榜题名",
+    "老人过寿",
+    "乔迁新居",
+    "新店开业",
+    "探望病人",
+    "追悼故人",
+    "其他"
+  ]
+}

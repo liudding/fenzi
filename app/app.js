@@ -4,6 +4,7 @@ require('./utils/navigate/index.js');
 import {
   getSettings
 } from '/utils/wxUtils.js';
+import { defaultEvents } from '/utils/index.js'
 // import {
 //   makeFakeData
 // } from './utils/fake'
@@ -28,7 +29,7 @@ App({
     this.globalData.contacts = this._contacts(this.globalData.gifts);
 
 
-    this._fetchAllData().then(allgifts => {
+    this._fetchAllGifts().then(allgifts => {
       that.globalData.gifts = allgifts
      
       that.onGiftsChanged()
@@ -42,6 +43,10 @@ App({
         that.giftsReadyCallback(allgifts)
       }
     })
+
+    this._fetchPreferences().then(res => {
+      that.globalData.preferences = (res.list || res.data)[0] || { events: defaultEvents()};
+    });
 
     getSettings().then(authSetting => {
       if (!authSetting || !authSetting['scope.userInfo']) {
@@ -154,7 +159,7 @@ App({
     return contacts
   },
 
-  async _fetchAllData() {
+  async _fetchAllGifts() {
     let countResp = await giftCollection.count()
     let count = countResp.total
 
@@ -189,8 +194,13 @@ App({
     }).skip(skip).end()
   },
 
+  async _fetchPreferences(skip = 0) {
+    return await db.collection('preferences').limit(1).get()
+  },
+
   globalData: {
     userInfo: null,
+    preferences: { events: defaultEvents(), },
     gifts: [],
     sentGifts: [],
     receivedGifts: [],

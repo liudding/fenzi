@@ -43,20 +43,7 @@ Page({
       value: 2000
     }],
 
-    eventRange: [
-      "参加婚礼",
-      "宝宝出生",
-      "宝宝满月",
-      "宝宝周岁",
-      "孩子升学",
-      "金榜题名",
-      "老人过寿",
-      "乔迁新居",
-      "新店开业",
-      "探望病人",
-      "参加葬礼",
-      "其他"
-    ]
+    eventRange: app.globalData.preferences.events
   },
 
   onLoad: function (options) {
