@@ -1,0 +1,5 @@
+<view class="page">
+  <view class="events">
+    <mp-cell wx:for="events" :key="item" title="{{item}}" link hover></mp-cell>
+  </view>
+</view>

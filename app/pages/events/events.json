@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "mp-cell": "weui-miniprogram/cell/cell"
+  },
+  "navigationBarTitleText": "事件类型",
+  "navigationStyle": "default"
+}
