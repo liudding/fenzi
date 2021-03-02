@@ -178,7 +178,18 @@ Page({
     });
   },
 
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function() {
+    return {
+      title: '记录人情往来份子钱',
+      path: '/pages/index/index',
+      imageUrl: '../../images/share-cover.png'
+    }
+  },
+  onShareTimeline() {
+    return {
+      title: '记录人情往来份子钱',
+      query: 'from=timeline',
+      imageUrl: '../../images/share-cover.png'
+    }
   }
 })
