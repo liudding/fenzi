@@ -93,4 +93,4 @@
 </view>
 
 
-<tip wx:if="{{showPin}}" text="添加到我的小程序"></tip>
+<pin-prompt auto name="礼金份子钱" logo="../../images/logo.png"></pin-prompt>
