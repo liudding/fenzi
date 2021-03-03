@@ -6,46 +6,11 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "1206171",
-      "name": "tea",
-      "font_class": "tea",
-      "unicode": "e6ab",
-      "unicode_decimal": 59051
-    },
-    {
-      "icon_id": "11175970",
-      "name": "user",
-      "font_class": "user",
-      "unicode": "e699",
-      "unicode_decimal": 59033
-    },
-    {
-      "icon_id": "11248685",
-      "name": "edit-2",
-      "font_class": "edit-2",
-      "unicode": "e69c",
-      "unicode_decimal": 59036
-    },
-    {
-      "icon_id": "11339004",
-      "name": "fenziqian",
-      "font_class": "fenziqian",
-      "unicode": "e6a0",
-      "unicode_decimal": 59040
-    },
-    {
-      "icon_id": "11438260",
-      "name": "list",
-      "font_class": "list",
-      "unicode": "e6a4",
-      "unicode_decimal": 59044
-    },
-    {
-      "icon_id": "11438261",
-      "name": "pie-chart",
-      "font_class": "pie-chart",
-      "unicode": "e6a5",
-      "unicode_decimal": 59045
+      "icon_id": "20166844",
+      "name": "star",
+      "font_class": "star",
+      "unicode": "e6aa",
+      "unicode_decimal": 59050
     },
     {
       "icon_id": "11665467",
@@ -74,6 +39,48 @@
       "font_class": "life-buoy",
       "unicode": "e6a9",
       "unicode_decimal": 59049
+    },
+    {
+      "icon_id": "1206171",
+      "name": "tea",
+      "font_class": "tea",
+      "unicode": "e6ab",
+      "unicode_decimal": 59051
+    },
+    {
+      "icon_id": "11339004",
+      "name": "fenziqian",
+      "font_class": "fenziqian",
+      "unicode": "e6a0",
+      "unicode_decimal": 59040
+    },
+    {
+      "icon_id": "11175970",
+      "name": "user",
+      "font_class": "user",
+      "unicode": "e699",
+      "unicode_decimal": 59033
+    },
+    {
+      "icon_id": "11438260",
+      "name": "list",
+      "font_class": "list",
+      "unicode": "e6a4",
+      "unicode_decimal": 59044
+    },
+    {
+      "icon_id": "11438261",
+      "name": "pie-chart",
+      "font_class": "pie-chart",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    },
+    {
+      "icon_id": "11248685",
+      "name": "edit-2",
+      "font_class": "edit-2",
+      "unicode": "e69c",
+      "unicode_decimal": 59036
     }
   ]
 }

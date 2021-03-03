@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "mp-cell": "weui-miniprogram/cell/cell"
+    "mp-cell": "weui-miniprogram/cell/cell",
+    "pin-prompt": "/miniprogram_npm/wx-pin-prompt/pin-prompt"
   },
   "navigationBarTitleText": "我的",
   "navigationStyle": "default"

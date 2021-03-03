@@ -1,16 +1,18 @@
-
 const app = getApp()
 
-import { getSettings } from '../../utils/wxUtils.js'
+import {
+  getSettings
+} from '../../utils/wxUtils.js'
 
 
 Page({
 
   data: {
     userInfo: {
-      
+
     },
-    showProfile: true
+    showProfile: true,
+    showPinPrompt: false
   },
 
   onLoad: function (options) {
@@ -22,13 +24,13 @@ Page({
         that.setData({
           showProfile: false
         })
-       
+
       } else {
         that.init()
       }
     })
 
-    
+
   },
 
   init() {
@@ -79,6 +81,15 @@ Page({
     })
   },
 
+  onTapPin() {
+    this.setData({
+      showPinPrompt: false
+    })
+    this.setData({
+      showPinPrompt: true
+    })
+  },
+
   onTapExport() {
     wx.navigateTo({
       url: '/pages/me/export/export',
@@ -112,7 +123,7 @@ Page({
     })
   },
 
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
     return {
       title: '记录人情往来份子钱',
       path: '/pages/index/index',

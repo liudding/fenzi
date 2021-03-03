@@ -3,11 +3,9 @@
     <view class="avatar-wrapper">
       <image src="{{userInfo.avatarUrl}}" class="avatar"></image>
     </view>
-
     <view class="infos">
       <text class="name">{{userInfo.nickName}}</text>
     </view>
-
   </view>
 
   <button wx:else bindgetuserinfo="onTapLogin" open-type="getUserInfo" class="c-btn login-btn" hover-class="c-btn-hover">授权登录</button>
@@ -16,6 +14,9 @@
     <mp-cell title="分享转发" footer="如果喜欢，请分享给好友" link hover>
       <view slot="icon" class="iconfont icon-share icon"></view>
       <button open-type="share" class="c-btn feedback"></button>
+    </mp-cell>
+    <mp-cell bindtap="onTapPin" title="添加收藏" footer="下次访问更方便" link hover>
+      <view slot="icon" class="iconfont icon-star icon"></view>
     </mp-cell>
 
     <mp-cell bindtap="onTapExport" title="数据导出" link hover>
@@ -42,3 +43,5 @@
     </mp-cell>
   </view>
 </view>
+
+<pin-prompt show="{{showPinPrompt}}" type="card" name="礼金份子钱" logo="../../images/logo.png"></pin-prompt>

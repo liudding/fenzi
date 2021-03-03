@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "wx-pin-prompt": "^1.1.1"
+    "wx-pin-prompt": "^1.1.2"
   },
   "devDependencies": {},
   "scripts": {
