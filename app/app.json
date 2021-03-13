@@ -1,14 +1,18 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/dashboard/dashboard",
+    "pages/settings/settings/settings",
+    "pages/events/events",
     "pages/edit/edit",
+   
+    "pages/dashboard/dashboard",
     "pages/me/me",
     "pages/search/search",
-    "pages/me/export/export",
+    "pages/settings/export/export",
     "pages/index/gifts/gifts",
     "pages/index/event/event",
     "pages/edit/batch/batch"
+   
   ],
   "tabBar": {
     "color": "red",

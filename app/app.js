@@ -48,6 +48,7 @@ App({
     })
 
     this._fetchPreferences().then(res => {
+
       that.globalData.preferences = (res.list || res.data)[0] || {
         events: defaultEvents(),
         relationships: defaultRelationships()

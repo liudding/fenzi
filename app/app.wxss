@@ -6,6 +6,7 @@
 
 page {
   --primary-color: #00b9f1;
+  --primary-color-light: #00b9f1b2;
   --secondary-color: #b2b2b2;
   --success-color: #2ECC71;
   --danger-color: #F22613;

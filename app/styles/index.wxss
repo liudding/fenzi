@@ -34,6 +34,11 @@
   color: #333;
   background-color: #fff;
   border-radius: 0;
+
+  cursor: pointer;
+
+  line-height: normal;
+  margin: 0;
 }
 
 .c-btn::after {
@@ -53,6 +58,9 @@
   background: #00b9f1;
   border-radius: 16px;
   color: white;
+
+  font-size: 18px;
+  line-height: 2.55555556;
 }
 
 .c-btn__danger {

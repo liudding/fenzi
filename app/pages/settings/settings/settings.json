@@ -3,9 +3,8 @@
     "mp-cells": "weui-miniprogram/cells/cells",
     "mp-cell": "weui-miniprogram/cell/cell",
     "mp-icon": "weui-miniprogram/icon/icon",
-    "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog",
-    "mp-form": "weui-miniprogram/form/form"
+    "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog"
   },
-  "navigationBarTitleText": "事件类型",
+  "navigationBarTitleText": "设置",
   "navigationStyle": "default"
 }

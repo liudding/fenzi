@@ -43,7 +43,10 @@ Page({
     }],
 
     relationshipRange: app.globalData.preferences.relationships,
-    eventRange: app.globalData.preferences.events
+    eventRange: app.globalData.preferences.events,
+
+    showEventPicker: false,
+    showRelationshipPicker: false
   },
 
   onLoad: function (options) {
@@ -76,6 +79,19 @@ Page({
     });
   },
 
+  onTapRelastionship() {
+    this.setData({
+      showRelationshipPicker: true
+    })
+  },
+
+  onTapEvent() {
+    this.setData({
+      showEventPicker: true
+    })
+  },
+
+
   inputChange(e) {
     const {
       field
@@ -104,16 +120,26 @@ Page({
   },
 
   onRelationshipChange(e) {
+    // this.setData({
+    //   "formData.contact.relationship": this.data.relationshipRange[
+    //     e.detail.value
+    //   ]
+    // });
+
+    const relation = e.currentTarget.dataset.value;
+
     this.setData({
-      "formData.contact.relationship": this.data.relationshipRange[
-        e.detail.value
-      ]
+      "formData.contact.relationship": relation,
+      showRelationshipPicker: false
     });
   },
 
   onEventChange(e) {
+    const event = e.currentTarget.dataset.value;
+
     this.setData({
-      "formData.event": this.data.eventRange[e.detail.value]
+      "formData.event": event,
+      showEventPicker: false
     });
   },
 
@@ -351,6 +377,15 @@ Page({
 
         wx.naviBack(data);
       });
+  },
+
+  onTapAddEvent() {
+    this.setData({
+      showEventPicker: false
+    })
+    wx.navigateTo({
+      url: '/pages/events/events',
+    })
   },
 
   onShareAppMessage: function () {}

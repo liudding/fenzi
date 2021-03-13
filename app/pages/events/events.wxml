@@ -1,5 +1,27 @@
 <view class="page">
-  <view class="events">
-    <mp-cell wx:for="events" :key="item" title="{{item}}" link hover></mp-cell>
+  <mp-cells class="events">
+    <mp-cell wx:for="{{events}}" wx:key="item" title="{{item}}"></mp-cell>
+  </mp-cells>
+</view>
+
+<view class="fab fab-bottom-right">
+  <view bindtap="onTapAdd" class="iconfont bg-primary new-btn">
+    <mp-icon icon="add" color="white" size="{{24}}"></mp-icon>
   </view>
 </view>
+
+<mp-half-screen-dialog show="{{showModal}}" title="添加事件" subTitle="" desc="" tips="" >
+  <view slot="desc" class="event-form">
+    <mp-form>
+      <mp-cell>
+        <input value="{{form.name}}" bindinput="inputChange" data-field="name" type="text" class="weui-input"
+          placeholder="事件名称" focus cursor-spacing="20" />
+      </mp-cell>
+
+    </mp-form>
+
+    <view class="weui-btn-area">
+      <button class="c-btn c-btn__primary" bindtap="submitForm" hover-class="c-btn-hover">确定</button>
+    </view>
+  </view>
+</mp-half-screen-dialog>

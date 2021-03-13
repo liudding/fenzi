@@ -90,9 +90,9 @@ Page({
     })
   },
 
-  onTapExport() {
+  onTapSettings() {
     wx.navigateTo({
-      url: '/pages/me/export/export',
+      url: '/pages/settings/settings/settings',
     })
   },
 

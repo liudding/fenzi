@@ -19,7 +19,7 @@
       <view slot="icon" class="iconfont icon-star icon"></view>
     </mp-cell>
 
-    <mp-cell bindtap="onTapExport" title="数据导出" link hover>
+    <mp-cell bindtap="onTapSettings" title="个人设置" footer="事件、导出" link hover>
       <view slot="icon" class="iconfont icon-file-text icon"></view>
     </mp-cell>
     <mp-cell title="联系客服" link hover>

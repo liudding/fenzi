@@ -47,3 +47,49 @@ page {
   color: darkgray;
 
 }
+
+.picker {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  justify-content: space-between;
+
+}
+
+.picker .picker-item {
+  
+  padding: 8px;
+  box-sizing: border-box;
+  width: 33.33%;
+
+  font-size: 30rpx;
+  line-height: normal;
+  margin: 0;
+}
+
+.picker-item-name {
+  background: var(--primary-color-light);
+  width: 100%;
+  text-align: center;
+
+  border-radius: 16px;
+  padding: 6px;
+  box-sizing: border-box;
+
+  font-size: 30rpx;
+
+  color: white;
+}
+
+.event-add {
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+
+  border-radius: 100px;
+  border: 1px solid var(--primary-color-light);
+
+  text-align: center;
+  color: var(--primary-color);
+}

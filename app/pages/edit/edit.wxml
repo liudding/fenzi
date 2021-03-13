@@ -3,32 +3,35 @@
 	<view class="">
 		<mp-form>
 			<mp-cell>
-				<input value="{{formData.amount}}" bindinput="inputChange" data-field="amount" type="number" class="weui-input amount" placeholder="0.00" />
+				<input value="{{formData.amount}}" bindinput="inputChange" data-field="amount" type="number"
+					class="weui-input amount" placeholder="0.00" />
 				<view class="quick-pick" slot="footer">
-					<button wx:for="{{commonMoney}}" :key="value" bindtap="onTapQuickPick" data-index="{{index}}" class="quick-pick-item ">{{item.name}}</button>
+					<button wx:for="{{commonMoney}}" wx:key="value" bindtap="onTapQuickPick" data-index="{{index}}"
+						class="quick-pick-item ">{{item.name}}</button>
 				</view>
 			</mp-cell>
 
 			<mp-cell title="亲友">
-				<input value="{{formData.contact.name}}" bindinput="inputChange" data-field="contact.name" class="weui-input person" placeholder="填写亲友" />
+				<input value="{{formData.contact.name}}" bindinput="inputChange" data-field="contact.name"
+					class="weui-input person" placeholder="填写亲友" />
 			</mp-cell>
 
+			<mp-cell title="关系" footer="{{formData.contact.relationship}}" bindtap="onTapRelastionship" link hover></mp-cell>
 
-			<picker mode="selector" value="{{formData.relationship}}" range="{{relationshipRange}}" bindchange="onRelationshipChange">
+			<!-- <picker mode="selector" value="{{formData.relationship}}" range="{{relationshipRange}}"
+				bindchange="onRelationshipChange">
 				<mp-cell title="关系" footer="{{formData.contact.relationship}}" link hover></mp-cell>
-			</picker>
+			</picker> -->
 
 			<block wx:if="{{formData.is_income}}">
 				<mp-cell title="事件">
-					<input value="{{formData.event}}" bindinput="inputChange" data-field="event" class="weui-input person" placeholder="如：我的婚礼" />
+					<input value="{{formData.event}}" bindinput="inputChange" data-field="event" class="weui-input person"
+						placeholder="如：我的婚礼" />
 				</mp-cell>
 			</block>
 
 			<block wx:else>
-				<picker mode="selector" value="{{formData.event}}" range="{{eventRange}}" bindchange="onEventChange">
-					<mp-cell title="事件" footer="{{formData.event}}" link hover></mp-cell>
-				</picker>
-
+				<mp-cell title="事件" footer="{{formData.event}}" bindtap="onTapEvent"  link hover></mp-cell>
 			</block>
 
 
@@ -37,18 +40,37 @@
 			</picker>
 
 			<mp-cell>
-				<textarea value="{{formData.note}}" bindinput="inputChange" data-field="note" class="weui-input note" maxlength="100" placeholder="备注"></textarea>
+				<textarea value="{{formData.note}}" bindinput="inputChange" data-field="note" class="weui-input note"
+					maxlength="100" placeholder="备注" cursor-spacing="20"></textarea>
 			</mp-cell>
 		</mp-form>
-
 	</view>
-
-
 
 	<view class="weui-btn-area">
 		<button class="c-btn c-btn__primary" bindtap="submitForm" hover-class="c-btn-hover">确定</button>
 
-		<button wx:if="{{formData._id}}" class="c-btn c-btn__danger delete-btn" bindtap="onTapDelete" hover-class="c-btn-hover">删除</button>
+		<button wx:if="{{formData._id}}" class="c-btn c-btn__danger delete-btn" bindtap="onTapDelete"
+			hover-class="c-btn-hover">删除</button>
 	</view>
 
 </view>
+
+<mp-half-screen-dialog bindbuttontap="buttontap" show="{{showEventPicker}}" title="选择事件" subTitle="" desc="" tips="" buttons="{{buttons}}">
+	<view slot="desc" class="picker">
+		<view wx:for="{{eventRange}}" wx:key="item" bindtap="onEventChange" data-value="{{item}}" data-index="{{index}}" class="picker-item" hover-class="c-btn-hover">
+			<view class="picker-item-name"> {{item}}</view>
+		</view>
+
+		<view bindtap="onTapAddEvent" class="picker-item" hover-class="c-btn-hover">
+			<view class="event-add">添加</view>
+		</view>
+	</view>
+</mp-half-screen-dialog>
+
+<mp-half-screen-dialog bindbuttontap="buttontap" show="{{showRelationshipPicker}}" title="选择关系" subTitle="" desc="" tips="" buttons="{{buttons}}">
+	<view slot="desc" class="picker">
+		<view wx:for="{{relationshipRange}}" wx:key="item" bindtap="onRelationshipChange" data-value="{{item}}" data-index="{{index}}" class="picker-item" hover-class="c-btn-hover">
+			<view class="picker-item-name"> {{item}}</view>
+		</view>
+	</view>
+</mp-half-screen-dialog>
