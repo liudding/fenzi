@@ -32,15 +32,19 @@
     </mp-cell>
     <!-- <mp-cell bindtap="onTapHelp" title="帮助与反馈" link hover></mp-cell> -->
 
-    <view style="color: gray; font-size: 12px; margin-top: 16px; margin-left: 16px;">更多小程序</view>
+    <view style="color: gray; font-size: 12px; margin: 16px 0 8px 16px;">更多小程序</view>
 
-    <mp-cell title="易卡包" bindtap="onTapCardllet" link>
-      <image slot="icon" src="/images/cardllet.png" mode="aspectFill" class="icon image-icon"></image>
-    </mp-cell>
+    <view class="d-flex my-mini-apps">
+      <view class="mini-app" bindtap="onTapCardllet">
+        <image slot="icon" src="/images/cardllet.png" mode="aspectFill" class=" mini-app-logo"></image>
+        <view class="mini-app-name">易卡包</view>
+      </view>
 
-    <mp-cell title="古诗起名" bindtap="onTapPoem" link>
-      <image slot="icon" src="/images/poem.png" mode="aspectFill" class=" image-icon"></image>
-    </mp-cell>
+      <view class="mini-app"  bindtap="onTapPoem">
+        <image slot="icon" src="/images/poem.png" mode="aspectFill" class="mini-app-logo"></image>
+        <view class="mini-app-name">古诗起名</view>
+      </view>
+    </view>
   </view>
 </view>
 
