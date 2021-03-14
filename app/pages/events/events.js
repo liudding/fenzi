@@ -123,7 +123,7 @@ Page({
     wx.hideLoading()
 
     wx.showToast({
-      title: '保存成功',
+      title: '更新成功',
     })
   },
 
