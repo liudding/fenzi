@@ -6,7 +6,8 @@ import {
 } from '/utils/wxUtils.js';
 import {
   defaultEvents,
-  defaultRelationships
+  defaultRelationships,
+  defaultCommonMoney
 } from '/utils/index.js'
 // import {
 //   makeFakeData
@@ -49,10 +50,7 @@ App({
 
     this._fetchPreferences().then(res => {
 
-      that.globalData.preferences = (res.list || res.data)[0] || {
-        events: defaultEvents(),
-        relationships: defaultRelationships()
-      };
+      that.globalData.preferences = res;
     });
 
     getSettings().then(authSetting => {
@@ -202,7 +200,24 @@ App({
   },
 
   async _fetchPreferences(skip = 0) {
-    return await db.collection('preferences').limit(1).get()
+    const res = await db.collection('preferences').limit(1).get()
+
+    const preferences = (res.list || res.data)[0] || null;
+
+    if (preferences) return preferences;
+
+    const data = {
+      events: defaultEvents(),
+      relationships: defaultRelationships(),
+      common_money: defaultCommonMoney()
+    }
+    const result = await db.collection('preferences').add({
+      data
+    })
+
+    data._id = result._id;
+
+    return data;
   },
 
   globalData: {

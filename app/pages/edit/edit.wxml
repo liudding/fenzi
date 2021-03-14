@@ -7,7 +7,7 @@
 					class="weui-input amount" placeholder="0.00" />
 				<view class="quick-pick" slot="footer">
 					<button wx:for="{{commonMoney}}" wx:key="value" bindtap="onTapQuickPick" data-index="{{index}}"
-						class="quick-pick-item ">{{item.name}}</button>
+						class="quick-pick-item ">{{item}}</button>
 				</view>
 			</mp-cell>
 

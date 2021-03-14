@@ -45,3 +45,7 @@ export function defaultEvents() {
 export function defaultRelationships() {
   return ["亲戚", "朋友", "同学", "同事", "邻里", "其他"];
 }
+
+export function defaultCommonMoney() {
+  return [200, 400, 500, 600, 800, 1000];
+}

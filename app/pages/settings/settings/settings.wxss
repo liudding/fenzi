@@ -1,1 +1,13 @@
 /* app/pages/settings/settings/settings.wxss */
+
+.weui-cell__ft {
+  font-size: 12px;
+}
+
+.weui-cell {
+  padding: 12px 16px;
+}
+
+input {
+  font-size: 14px;
+}

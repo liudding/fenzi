@@ -30,12 +30,12 @@ page {
 
 .quick-pick {
   display: flex;
-  width: 100px;
+  width: 130px;
   flex-wrap: wrap;
 }
 
 .quick-pick-item {
-  min-width: 30px;
+  min-width: 40px;
   border: none;
   padding: 0 4px;
   margin: 2px 2px 0 0;

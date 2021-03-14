@@ -30,7 +30,6 @@
       <view slot="icon" class="iconfont icon-smile icon"></view>
       <button open-type="feedback" class="c-btn feedback"></button>
     </mp-cell>
-    <!-- <mp-cell bindtap="onTapHelp" title="帮助与反馈" link hover></mp-cell> -->
 
     <view style="color: gray; font-size: 12px; margin: 16px 0 8px 16px;">更多小程序</view>
 
