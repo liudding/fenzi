@@ -1,11 +1,11 @@
 
 page {
   background: #fff;
+  
 }
 
-.page {
-  /* flex-direction: column;
-  align-items: center; */
+.events {
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .event-form {

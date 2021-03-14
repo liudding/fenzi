@@ -1,5 +1,5 @@
-<view class="page">
-    <mp-cell wx:for="{{events}}" wx:key="item" title="{{item}}" bindtap="onTapEvent" data-index="{{index}}"></mp-cell>
+<view class="events">
+  <mp-cell wx:for="{{events}}" wx:key="item" title="{{item}}" bindtap="onTapEvent" data-index="{{index}}"></mp-cell>
 </view>
 
 <view class="fab fab-bottom-right">
@@ -8,11 +8,11 @@
   </view>
 </view>
 
-<mp-half-screen-dialog show="{{showModal}}" title="添加事件" subTitle="" desc="" tips="" >
+<mp-half-screen-dialog show="{{showModal}}" title="添加事件" subTitle="" desc="" tips="">
   <view slot="desc" class="event-form">
     <mp-form>
       <mp-cell>
-        <input  value="{{form.name}}" bindinput="inputChange" data-field="name" type="text" class="weui-input"
+        <input value="{{form.name}}" bindinput="inputChange" data-field="name" type="text" class="weui-input"
           placeholder="事件名称" cursor-spacing="20" />
       </mp-cell>
 
