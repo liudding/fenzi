@@ -34,8 +34,6 @@ Page({
   onLoad: function (options) {
     let gift = wx.getPageData();
 
-    console.log(app.globalData.preferences, this.data.commonMoney)
-
     if (!gift) {
       wx.showModal({
         title: "出错了",
@@ -51,7 +49,12 @@ Page({
     this.data.formData = Object.assign(this.data.formData, gift);
     this.setData({
       formData: this.data.formData,
+    });
 
+  },
+
+  onShow: function() {
+    this.setData({
       commonMoney: app.globalData.preferences.common_money,
       relationshipRange: app.globalData.preferences.relationships,
       eventRange: app.globalData.preferences.events,

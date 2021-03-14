@@ -1,7 +1,5 @@
 <view class="page">
-  <mp-cells class="events">
-    <mp-cell wx:for="{{events}}" wx:key="item" title="{{item}}"></mp-cell>
-  </mp-cells>
+    <mp-cell wx:for="{{events}}" wx:key="item" title="{{item}}" bindtap="onTapEvent" data-index="{{index}}"></mp-cell>
 </view>
 
 <view class="fab fab-bottom-right">

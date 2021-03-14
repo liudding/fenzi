@@ -18,7 +18,7 @@ Page({
 
   onLoad: function (options) {
     this.setData({
-      events: app.globalData.preferences.events,
+      events: app.globalData.preferences.events.concat([]),
     })
   },
 
@@ -37,46 +37,65 @@ Page({
   },
 
   async submitForm() {
-    if (!this.data.form.name) {
-      wx.showModal({
-        title: "提示",
-        content: "请填写事件名称",
-        showCancel: false
+    const newEvent = this.data.form.name.trim();
+
+    if (!newEvent) {
+      wx.showToast({
+        title: "请填写事件名称",
+        icon: "error"
       });
       return;
     }
 
-    if (this.data.form.name.length > 10) {
+    if (newEvent > 10) {
       wx.showModal({
-        title: "提示",
-        content: "事件名称过长",
-        showCancel: false
+        title: "事件名称过长",
+        icon: "error"
       });
       return;
     }
 
+    if (newEvent === this.data.form.old) {
+      this.setData({
+        showModal: false
+      })
 
-    if (this.data.form.old) {
-      const idx = this.data.events.findIndex(i => i === this.data.form.name)
-      this.data.events.splice(idx, 1, this.data.form.name)
-    } else {
-      this.data.events.push(this.data.form.name)
+      wx.showToast({
+        title: "未作更改",
+        icon: "none"
+      });
+
+      return
+    }
+
+
+    const idx = this.data.events.findIndex(i => i === newEvent)
+
+    if (idx >= 0) {
+      wx.showToast({
+        title: '同名事件已存在',
+        icon: 'error'
+      })
+
+      return
+    }
+
+
+    if (this.data.form.old) { // update
+      const index = this.data.events.findIndex(i => i === this.data.form.old)
+
+      this.data.events.splice(index, 1, newEvent)
+    } else { // create new
+      this.data.events.push(newEvent)
     }
 
     await this.updatePreferences(this.data.events)
-
-    this.setData({
-      events: this.data.events
-    })
-
-    app.globalData.preferences.events = this.data.events
   },
 
   async updatePreferences(events) {
     wx.showLoading({
       title: "保存中..."
     });
-
 
     if (!app.globalData.preferences._id) {
 
@@ -86,34 +105,71 @@ Page({
           relationships: app.globalData.preferences.relationships
         }
       })
-
-      return;
+    } else {
+      await preferences.doc(app.globalData.preferences._id).update({
+        data: {
+          events
+        }
+      });
     }
 
-    preferences.doc(app.globalData.preferences._id).update({
-      data: {
-        events
-      }
-    });
+    this.setData({
+      events: events,
+      showModal: false
+    })
+
+    app.globalData.preferences.events = events
 
     wx.hideLoading()
+
+    wx.showToast({
+      title: '保存成功',
+    })
+  },
+
+
+  onTapEvent(e) {
+    const index = e.currentTarget.dataset.index;
+    const event = this.data.events[index];
+
+    wx.showActionSheet({
+      alertText: event,
+      itemList: ['编辑', '删除'],
+      success: res => {
+        if (res.tapIndex === 0) {
+          this.setData({
+            showModal: true,
+            form: {
+              name: event,
+              old: event
+            }
+          })
+        } else if (res.tapIndex === 1) {
+          this.onDelete(event)
+        }
+      }
+    })
   },
 
   onTapAdd() {
     this.setData({
+      form: {name: '', old: null},
       showModal: true
     })
   },
 
-  onTapDelete(e) {
-    const index = e.target.dataset.index;
-    const event = this.data.events[index];
-
-    const gifts = this.findGiftsWithEvent(event)
-
+  onDelete(event) {
     wx.showModal({
       title: '确定删除 ' + event + '吗？',
-      message: ''
+      content: '不会删除相关的份子记录',
+      success: (res) => {
+        if (res.confirm) {
+          const index = this.data.events.findIndex(i => i === event);
+          this.data.events.splice(index, 1)
+
+          this.updatePreferences(this.data.events)
+        }
+      }
     })
   },
 
