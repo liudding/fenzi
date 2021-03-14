@@ -5,6 +5,6 @@
     "mp-icon": "weui-miniprogram/icon/icon",
     "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog"
   },
-  "navigationBarTitleText": "设置",
+  "navigationBarTitleText": "个人设置",
   "navigationStyle": "default"
 }
