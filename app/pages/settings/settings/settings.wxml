@@ -1,28 +1,24 @@
 <view class="page">
-  <mp-cells>
-    <mp-cell title="自定义事件"  bindtap="onTapEvents" link hover></mp-cell>
-    <mp-cell title="常用金额"  bindtap="onTapMoney" link hover></mp-cell>
-  </mp-cells>
+  <mp-cell title="自定义事件" bindtap="onTapEvents" link hover></mp-cell>
+  <mp-cell title="常用金额" bindtap="onTapMoney" link hover></mp-cell>
 
-  <mp-cells>
-    <mp-cell title="数据导出"  bindtap="onTapExport" link hover></mp-cell>
-  </mp-cells>
+  <mp-cell title="数据导出" bindtap="onTapExport" link hover></mp-cell>
 </view>
 
 
 
-<mp-half-screen-dialog show="{{showMoneyModal}}" title="常用金额" subTitle="" desc="" tips="" >
+<mp-half-screen-dialog show="{{showMoneyModal}}" title="常用金额" subTitle="" desc="" tips="">
   <view slot="desc" class="">
     <mp-form>
       <mp-cells>
-      <mp-cell wx:for="{{moneyForm}}" wx:key="item" title="">
-        <input value="{{item}}" bindinput="inputChange" data-field="{{index}}" type="text" class="weui-input"
-          placeholder="请输入金额" cursor-spacing="20" />
-      </mp-cell>
-    </mp-cells>
+        <mp-cell wx:for="{{moneyForm}}" wx:key="item" title="">
+          <input value="{{item}}" bindinput="inputChange" data-field="{{index}}" type="text" class="weui-input"
+            placeholder="请输入金额" cursor-spacing="20" />
+        </mp-cell>
+      </mp-cells>
     </mp-form>
 
-    <view class="" style="margin-top: 16px;">
+    <view class="" style="margin-top: 32px;">
       <button class="c-btn c-btn__primary" bindtap="submitForm" hover-class="c-btn-hover">确定</button>
     </view>
   </view>

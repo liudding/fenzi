@@ -3,10 +3,6 @@ const app = getApp()
 const db = wx.cloud.database();
 const preferences = db.collection("preferences");
 
-import {
-  defaultCommonMoney
-} from '../../../utils/index'
-
 
 Page({
 
@@ -46,12 +42,16 @@ Page({
       }
     })
 
+    app.globalData.preferences.common_money = money;
+
     wx.showToast({
       title: '更新成功',
     })
 
     this.setData({
-      showMoneyModal: false
+      showMoneyModal: false,
+      moneyForm: money
+
     })
   },
 
