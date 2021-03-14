@@ -12,8 +12,8 @@
   <view slot="desc" class="event-form">
     <mp-form>
       <mp-cell>
-        <input value="{{form.name}}" bindinput="inputChange" data-field="name" type="text" class="weui-input"
-          placeholder="事件名称" focus cursor-spacing="20" />
+        <input  value="{{form.name}}" bindinput="inputChange" data-field="name" type="text" class="weui-input"
+          placeholder="事件名称" cursor-spacing="20" />
       </mp-cell>
 
     </mp-form>

@@ -17,7 +17,7 @@
       <mp-cells>
       <mp-cell wx:for="{{moneyForm}}" wx:key="item" title="">
         <input value="{{item}}" bindinput="inputChange" data-field="{{index}}" type="text" class="weui-input"
-          placeholder="请输入金额" focus cursor-spacing="20" />
+          placeholder="请输入金额" cursor-spacing="20" />
       </mp-cell>
     </mp-cells>
     </mp-form>
